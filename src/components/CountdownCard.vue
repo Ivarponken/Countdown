@@ -12,9 +12,6 @@ let interval
 const startTime = new Date()
 const endTime = props.event.date
 
-// Ljud för när nedräkningen tar slut
-const alertSound = new Audio('/sounds/alert.mp3') // Lägg din ljudfil i public/sounds/
-
 function pad(num) {
   return num.toString().padStart(2, '0')
 }
@@ -38,12 +35,6 @@ function updateRemaining() {
     remaining.value = messages[Math.floor(Math.random() * messages.length)]
     progress.value = 100
     clearInterval(interval)
-
-    // Spela ljud när tiden tar slut
-    alertSound.play().catch(() => {
-      console.warn('Ljud kunde inte spelas automatiskt, användaren måste interagera först.')
-    })
-
     return
   }
 
@@ -72,7 +63,6 @@ onMounted(() => {
 
 onUnmounted(() => clearInterval(interval))
 </script>
-
 <template>
   <div class="countdown-card">
     <h3>{{ event.name }}</h3>
