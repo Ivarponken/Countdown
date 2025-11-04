@@ -81,6 +81,11 @@ onUnmounted(() => clearInterval(interval))
   border-radius: 12px;
   padding: 16px;
   margin-bottom: 16px;
+  transition: all 0.2s ease;
+}
+.countdown-card:hover {
+  transform: translate3d(-5px, -3px, 0px);
+  box-shadow: 8px 10px 8px rgba(0, 0, 0, 0.527);
 }
 
 .countdown-card h3 {

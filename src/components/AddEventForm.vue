@@ -55,6 +55,6 @@ function addNewEvent() {
 }
 
 .add-form button:hover {
-  background: #00cccc;
+  background: #00888f;
 }
 </style>

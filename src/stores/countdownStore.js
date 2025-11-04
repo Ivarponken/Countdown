@@ -4,7 +4,11 @@ export const useCountdownStore = defineStore('countdown', {
   state: () => ({
     events: [],
   }),
-
+  getters: {
+    sortedEvents: (state) => {
+      return [...state.events].sort((a, b) => a.date - b.date)
+    },
+  },
   actions: {
     loadFromLocalStorage() {
       const stored = localStorage.getItem('countdownEvents')
@@ -17,7 +21,11 @@ export const useCountdownStore = defineStore('countdown', {
         }))
       }
     },
-
+    removeFinishedEvents() {
+      const now = new Date()
+      this.events = this.events.filter((event) => event.date > now)
+      this.saveToLocalStorage()
+    },
     addEvent(name, date) {
       this.events.push({
         id: Date.now(),
